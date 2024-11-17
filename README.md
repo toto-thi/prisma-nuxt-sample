@@ -81,3 +81,37 @@ npx prisma introspect
 ```
 
 **Readmore about Schema in [Prisma](https://www.prisma.io/)**
+
+## 9. To make it work you will need more packages
+
+You will need: `typescript`, `@types/node` and `tsx`. Run:
+
+```bash
+yarn add -D tsx @types/node typescript
+```
+
+## 10. Config your `tsconfig.sjon` for ORM compatibility
+
+```graphql
+    Prisma/
+    -----schema.prisma
+    -----merge-schema.ts
+    -----tsconfig.json
+```
+
+`tsconfig.json`:
+
+```json
+{
+    "compilerOptions": {
+      "target": "ES2020",
+      "module": "ESNext",
+      "strict": true,
+      "esModuleInterop": true,
+      "moduleResolution": "Node",
+      "skipLibCheck": true,
+      "outDir": "../dist"
+    },
+    "include": ["merge-schema.ts"]
+  }
+```
